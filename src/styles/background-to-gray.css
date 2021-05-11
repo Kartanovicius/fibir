@@ -1,0 +1,17 @@
+body {
+    background: linear-gradient(-45deg, #8eb026, #8eb026, #434343, #434343);
+    background-size: 400% 400%;
+    animation: gradient 5s ease 1;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
