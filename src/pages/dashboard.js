@@ -20,9 +20,11 @@ export default function Dashboard({user: loggedInUser}) {
                 <Sticky>
                     <Header/>
                 </Sticky>
-                <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
+                <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 justify-between mx-auto max-w-screen-lg">
                     <Timeline/>
-                    <Sidebar/>
+                    <div className="sm:visible invisible">
+                        <Sidebar/>
+                    </div>
                 </div>
             </div>
         </LoggedInUserContext.Provider>

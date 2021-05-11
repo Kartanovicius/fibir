@@ -40,7 +40,7 @@ export default function SignUp() {
                         username: username.toLowerCase(),
                         fullName,
                         emailAddress: emailAddress.toLowerCase(),
-                        following: ['Wg189Tt70ugzHupm2NuSV7Hs5UB3', createdUserResult.user.uid],
+                        following: ['gCvMFC3xKcOhWf9AqqzLL7dqmSz2', createdUserResult.user.uid],
                         followers: [],
                         dateCreated: Date.now(),
                         gender: gender.toLowerCase()
