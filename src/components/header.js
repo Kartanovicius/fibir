@@ -3,13 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
-import {
-  DASHBOARD_IMAGE,
-  DEFAULT_FEMALE_IMAGE_PATH,
-  DEFAULT_IMAGE_PATH,
-  DEFAULT_MALE_IMAGE_PATH,
-  DEFAULT_OTHER_IMAGE_PATH, FIBIR_LOGO_IMAGE, SIGN_OUT_IMAGE
-} from '../constants/paths';
+import * as PATHS from '../constants/paths';
 import useUser from '../hooks/use-user';
 
 export default function Header() {
@@ -20,16 +14,16 @@ export default function Header() {
 
   const userGender = (gender) => {
     if(gender === "male"){
-      return DEFAULT_MALE_IMAGE_PATH;
+      return PATHS.DEFAULT_MALE_IMAGE_PATH;
     }
     else if(gender === "female"){
-      return DEFAULT_FEMALE_IMAGE_PATH;
+      return PATHS.DEFAULT_FEMALE_IMAGE_PATH;
     }
     else if(gender === "other"){
-      return DEFAULT_OTHER_IMAGE_PATH;
+      return PATHS.DEFAULT_OTHER_IMAGE_PATH;
     }
     else {
-      return DEFAULT_IMAGE_PATH;
+      return PATHS.DEFAULT_IMAGE_PATH;
     }
   }
 
@@ -40,7 +34,7 @@ export default function Header() {
             <div className='text-center flex items-center align-items cursor-pointer'>
               <h1 className='flex justify-center w-full'>
               <Link to={ROUTES.DASHBOARD} aria-label="Fibir logo">
-                <img src={FIBIR_LOGO_IMAGE} alt="Fibir" className='w-20 my-2' />
+                <img src={PATHS.FIBIR_LOGO_IMAGE} alt="Fibir" className='w-20 my-2' />
               </Link>
             </h1>
           </div>
@@ -48,7 +42,7 @@ export default function Header() {
             {loggedInUser ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                  <img src={DASHBOARD_IMAGE} alt="Dashboard" className='w-8 mr-10'/>
+                  <img src={PATHS.DASHBOARD_IMAGE} alt="Dashboard" className='w-8 mr-10'/>
                 </Link>
 
                 <button
@@ -65,7 +59,7 @@ export default function Header() {
                     }
                   }}
                 >
-                    <img src={SIGN_OUT_IMAGE} alt="Dashboard" className='w-7 mr-10'/>
+                    <img src={PATHS.SIGN_OUT_IMAGE} alt="Dashboard" className='w-7 mr-10'/>
                 </button>
                 {user && (
                   <div className="flex items-center cursor-pointer">
@@ -75,7 +69,7 @@ export default function Header() {
                         src={userGender(user.gender)}
                         alt={`${user?.username} profile`}
                         onError={(e) => {
-                          e.target.src = DEFAULT_IMAGE_PATH;
+                          e.target.src = PATHS.DEFAULT_IMAGE_PATH;
                         }}
                       />
                     </Link>
