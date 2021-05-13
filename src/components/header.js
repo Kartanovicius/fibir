@@ -4,10 +4,11 @@ import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
 import {
+  DASHBOARD_IMAGE,
   DEFAULT_FEMALE_IMAGE_PATH,
   DEFAULT_IMAGE_PATH,
   DEFAULT_MALE_IMAGE_PATH,
-  DEFAULT_OTHER_IMAGE_PATH
+  DEFAULT_OTHER_IMAGE_PATH, FIBIR_LOGO_IMAGE, SIGN_OUT_IMAGE
 } from '../constants/paths';
 import useUser from '../hooks/use-user';
 
@@ -34,12 +35,12 @@ export default function Header() {
 
   return (
       <header className="bg-black-light shadow-md mb-8">
-        <div className='container max-w-screen-lg mx-auto h-full'>
+        <div className='container max-w-screen-lg mx-auto h-full px-3 sm:px-0'>
           <div className='flex justify-between h-full'>
             <div className='text-center flex items-center align-items cursor-pointer'>
               <h1 className='flex justify-center w-full'>
               <Link to={ROUTES.DASHBOARD} aria-label="Fibir logo">
-                <img src="/images/fibir-logo.svg" alt="Fibir" className='w-20 my-2' />
+                <img src={FIBIR_LOGO_IMAGE} alt="Fibir" className='w-20 my-2' />
               </Link>
             </h1>
           </div>
@@ -47,7 +48,7 @@ export default function Header() {
             {loggedInUser ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                  <img src="/images/icons/dashboard.svg" alt="Dashboard" className='w-8 mr-10'/>
+                  <img src={DASHBOARD_IMAGE} alt="Dashboard" className='w-8 mr-10'/>
                 </Link>
 
                 <button
@@ -64,7 +65,7 @@ export default function Header() {
                     }
                   }}
                 >
-                    <img src="/images/icons/sign-out.svg" alt="Dashboard" className='w-7 mr-10'/>
+                    <img src={SIGN_OUT_IMAGE} alt="Dashboard" className='w-7 mr-10'/>
                 </button>
                 {user && (
                   <div className="flex items-center cursor-pointer">

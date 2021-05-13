@@ -4,6 +4,7 @@ import ReactLoader from './components/loader';
 import * as ROUTES from './constants/routes';
 import UserContext from './context/user';
 import useAuthListener from './hooks/use-auth-listener';
+import './styles/links.css'
 
 import ProtectedRoute from './helpers/protected-route';
 
