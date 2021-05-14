@@ -1,25 +1,25 @@
 import {useState, useContext} from 'react';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
+import {useEffect} from "react/cjs/react.production.min";
 
 export default function AddPost({captionInput}) {
     const [caption, setCaption] = useState('');
     const {firebase} = useContext(FirebaseContext);
     const {
-        user: {uid:userId}
+        user: {uid: userId}
     } = useContext(UserContext);
 
     const handleSubmitCaption = (event) => {
         event.preventDefault();
         setCaption('')
-
         return firebase
             .firestore()
             .collection('posts')
             .add({
                 caption: caption,
                 comments: [],
-                likes: [],  
+                likes: [],
                 userId: userId,
                 dateCreated: Date.now(),
             });

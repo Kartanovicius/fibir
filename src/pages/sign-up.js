@@ -82,6 +82,7 @@ export default function SignUp() {
 
                 <form onSubmit={handleSignUp} method="POST">
                     <input aria-label="Enter your username"
+                           maxLength="7"
                            type="text"
                            placeholder="Username"
                            className="text-sm text-gray-base px-2 py-2 w-full mb-5"
@@ -161,9 +162,6 @@ export default function SignUp() {
                         Already have account?{` `}
                         <Link to={ROUTES.LOGIN} className='font-bold'>Login</Link>
                     </p>
-                    <div className="text-white">
-                        Selected option is : {gender}
-                    </div>
                 </form>
             </div>
         </div>

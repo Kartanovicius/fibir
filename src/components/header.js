@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
       <header className="bg-black-light shadow-md mb-8">
-        <div className='container max-w-screen-lg mx-auto h-full px-3 sm:px-0'>
+        <div className='container max-w-screen-lg mx-auto h-full px-3 lg:px-0'>
           <div className='flex justify-between h-full'>
             <div className='text-center flex items-center align-items cursor-pointer'>
               <h1 className='flex justify-center w-full'>
