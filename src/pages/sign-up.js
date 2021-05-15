@@ -4,6 +4,7 @@ import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
 import {doesUsernameExist} from '../services/firebase';
 import '../styles/background.css';
+import * as PATHS from "../constants/paths";
 
 export default function SignUp() {
     const history = useHistory();
@@ -46,6 +47,14 @@ export default function SignUp() {
                         gender: gender.toLowerCase()
                     });
 
+                /*await firebase
+                    .firestore()
+                    .collection('users')
+                    .doc('gCvMFC3xKcOhWf9AqqzLL7dqmSz2')
+                    .set({
+                        followers: createdUserResult.user.uid,
+                    });*/
+
                 history.push(ROUTES.DASHBOARD);
             } catch (error) {
                 setFullName('');
@@ -67,7 +76,7 @@ export default function SignUp() {
         <div className='flex items-center text-center h-screen w-full justify-end'>
             <div className='flex hidden lg:block w-full bg-black-faded pb-16'>
                 <div className='flex flex-col items-start mx-28'>
-                    <img src="/images/fibir-logo.svg" alt="Fibir logo"/>
+                    <img src={PATHS.FIBIR_LOGO_IMAGE} alt="Fibir logo"/>
                     <h2 className='text-white text-left text-lg text-opacity-90 mx-4 mr-80'>
                         We don't collect personal data and we don't use cookies to collect
                         personally identifiable information about you.</h2>
@@ -75,14 +84,14 @@ export default function SignUp() {
             </div>
             <div className='flex flex-col w-full lg:w-2/6 lg:mx-0 mx-4 bg-black-primary h-screen justify-center px-6'>
                 <div className='flex block lg:hidden my-10 mx-auto '>
-                    <img src="/images/fibir-logo.svg" alt="Fibir logo"/>
+                    <img src={PATHS.FIBIR_LOGO_IMAGE} alt="Fibir logo"/>
                 </div>
 
                 {error && <p className='flex text-center text-red-primary my-3'>{error}</p>}
 
                 <form onSubmit={handleSignUp} method="POST">
                     <input aria-label="Enter your username"
-                           maxLength="7"
+                           maxLength="12"
                            type="text"
                            placeholder="Username"
                            className="text-sm text-gray-base px-2 py-2 w-full mb-5"

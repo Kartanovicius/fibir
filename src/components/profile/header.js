@@ -50,7 +50,7 @@ export default function Header({
     }, [user?.username, profileUserId]);
 
     const userGender = () => {
-        let path = '';
+        let path;
 
         if (gender === "male") {
             path = DEFAULT_MALE_IMAGE_PATH;
@@ -121,7 +121,7 @@ export default function Header({
                             {followerCount === 1 ? `follower` : `followers`}
                         </p>
                         <p className="">
-                            <span className="font-bold">{following?.length}</span> <br/>following
+                            <span className="font-bold">{following?.length - 1}</span> <br/>following
                         </p>
                     </>
                 )}

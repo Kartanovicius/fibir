@@ -4,16 +4,16 @@ import Header from './header';
 import Posts from './posts';
 import {getUserPostsByUserId} from '../../services/firebase';
 import '../../styles/background-to-gray.css'
-import {Link, Route, Switch} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Menu from "./menu";
-
+import FriendList from "./friend-list/friend-list";
 
 export default function Profile({user}) {
     const reducer = (state, newState) => ({...state, ...newState});
     const initialState = {
         profile: {},
         postsCollection: null,
-        followerCount: 0
+        followerCount: 0,
     };
 
     const [{profile, postsCollection, followerCount, gender}, dispatch] = useReducer(
@@ -35,6 +35,7 @@ export default function Profile({user}) {
 
         getProfileInfoAndPosts();
     }, [user.username]);
+
 
     return (
         <div className="grid grid-cols-3 gap-4">
@@ -63,7 +64,7 @@ export default function Profile({user}) {
                     <Posts posts={postsCollection}/>
                 </Route>
                 <Route exact path={`/p/${user.username}/friendlist`}>
-                    <Posts posts={postsCollection}/>
+                    <FriendList profile={profile}/>
                 </Route>
             </div>
         </div>

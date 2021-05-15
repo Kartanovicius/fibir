@@ -1,7 +1,6 @@
 import {useState, useContext} from 'react';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
-import {useEffect} from "react/cjs/react.production.min";
 
 export default function AddPost({captionInput}) {
     const [caption, setCaption] = useState('');
