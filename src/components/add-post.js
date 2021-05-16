@@ -12,6 +12,11 @@ export default function AddPost({captionInput}) {
     const handleSubmitCaption = (event) => {
         event.preventDefault();
         setCaption('')
+        setTimeout(
+            function() {
+                window.location.reload(true);
+            }, 200);
+
         return firebase
             .firestore()
             .collection('posts')
@@ -21,7 +26,7 @@ export default function AddPost({captionInput}) {
                 likes: [],
                 userId: userId,
                 dateCreated: Date.now(),
-            });
+            })
     };
 
     return (

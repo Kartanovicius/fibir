@@ -15,7 +15,7 @@ export default function Timeline() {
         {!posts ? (
         <Skeleton circle={false} count={4} width={675} height={500} className="mb-5" />
       ) : (
-        posts.map((content) => <Post key={content.docId} content={content} />)
+        posts.map((content) =>  <Post key={content.docId} content={content} />)
       )}
     </div>
   );
