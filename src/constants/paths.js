@@ -10,3 +10,4 @@ export const DEFAULT_OTHER_IMAGE_PATH = '/images/avatars/other.svg';
 export const FIBIR_LOGO_IMAGE = '/images/fibir-logo.svg';
 export const DASHBOARD_IMAGE = '/images/icons/dashboard.svg';
 export const SIGN_OUT_IMAGE = '/images/icons/sign-out.svg';
+export const EMPTY_PATH = '/images/icons/empty.svg';

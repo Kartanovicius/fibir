@@ -66,12 +66,12 @@ export default function Header({
     }
 
     return (
-        <div className="mx-auto max-w-screen-lg bg-black-light p-5 py-8 text-white space-y-5">
-            <div className="grid grid-cols-2">
-                <div>
+        <div className="mx-auto max-w-screen-lg bg-black-light p-3 py-8 text-white space-y-5 w-full">
+            <div className="grid md:grid-cols-2 grid-cols-3 items-center">
+                <div className="">
                     {profileUsername ? (
                         <img
-                            className="rounded-full h-40 w-40 flex"
+                            className="rounded-full h-40 w-40 flex mx-auto"
                             alt={`${fullName} profile picture`}
                             src={userGender()}
                             onError={(e) => {
@@ -82,16 +82,18 @@ export default function Header({
                         <Skeleton circle height={150} width={150} count={1}/>
                     )}
                 </div>
+                <div className="md:hidden"></div>
                 <div className="flex items-center justify-center flex-col">
-                    <div className="container items-baseline text-right space-y-4 px-2">
-                        <p className="text-3xl font-semibold">{profileUsername}</p>
-                        <p className="text-md">{!fullName ? <Skeleton count={1} height={24}/> : fullName}</p>
+                    <div className="space-y-4 flex flex-col md:items-end items-center justify-center">
+                        <p className="text-3xl font-semibold md:text-right text-center">{profileUsername}</p>
+                        <p className="text-md md:text-right text-center">{!fullName ? <Skeleton count={1} height={24}/> : fullName}</p>
                         {activeBtnFollow && isFollowingProfile === null ? (
                             <Skeleton count={1} width={80} height={32}/>
                         ) : (
                             activeBtnFollow && (
                                 <button
-                                    className="bg-blue-medium hover:bg-blue-light font-bold text-sm text-white w-20 h-8 ml-8 my-auto"
+                                    className="bg-blue-medium hover:bg-blue-light font-bold text-sm text-white
+                                    w-20 h-8 my-auto"
                                     type="button"
                                     onClick={handleToggleFollow}
                                     onKeyDown={(event) => {
@@ -107,7 +109,7 @@ export default function Header({
                     </div>
                 </div>
             </div>
-            <div className="container flex justify-between items-center text-center p-3">
+            <div className="grid grid-cols-3 justify-between items-center text-center">
                 {!followers || !following ? (
                     <Skeleton count={1} width={677} height={24}/>
                 ) : (

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 
-export default function Actions({ docId, totalLikes, likedPhoto}) {
+export default function Actions({ docId, totalLikes, likedPost}) {
   const {
     user: { uid: userId }
   } = useContext(UserContext);
-  const [toggleLiked, setToggleLiked] = useState(likedPhoto);
+  const [toggleLiked, setToggleLiked] = useState(likedPost);
   const [likes, setLikes] = useState(totalLikes);
   const { firebase, FieldValue } = useContext(FirebaseContext);
 
