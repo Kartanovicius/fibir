@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/header';
 import Timeline from '../components/timeline';
-import Sidebar from '../components/sidebar';
+import Sidebar from '../components/sidebar/index';
 import useUser from '../hooks/use-user';
 import LoggedInUserContext from '../context/logged-in-user';
 import '../styles/background-to-gray.css';
@@ -20,9 +20,9 @@ export default function Dashboard({user: loggedInUser}) {
                 <Sticky>
                     <Header/>
                 </Sticky>
-                <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 justify-between mx-auto max-w-screen-lg">
+                <div className="grid grid-cols-1 gap-4 justify-between mx-auto max-w-screen-lg md:grid-cols-3">
                     <Timeline/>
-                    <div className="sm:visible invisible">
+                    <div>
                         <Sidebar/>
                     </div>
                 </div>
