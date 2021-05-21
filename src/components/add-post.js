@@ -1,9 +1,26 @@
-import {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
+import Skeleton from "react-loading-skeleton";
+import {getFilters} from "../services/firebase";
 
 export default function AddPost({captionInput}) {
     const [caption, setCaption] = useState('');
+    const [allData, setAllData] = useState(null);
+    const [filter, setFilter] = useState(null);
+
+    useEffect(() => {
+        async function receivedFilters() {
+            const response = await getFilters();
+            setAllData(response);
+            if (filter === null){
+                setFilter('daily');
+            }
+        }
+
+        receivedFilters()
+    }, [])
+
     const {firebase} = useContext(FirebaseContext);
     const {
         user: {uid: userId}
@@ -13,7 +30,7 @@ export default function AddPost({captionInput}) {
         event.preventDefault();
         setCaption('')
         setTimeout(
-            function() {
+            function () {
                 window.location.reload(true);
             }, 200);
 
@@ -26,8 +43,11 @@ export default function AddPost({captionInput}) {
                 likes: [],
                 userId: userId,
                 dateCreated: Date.now(),
+                filter: filter
             })
     };
+
+    function handleChange(e) {return setFilter(e.target.value)}
 
     return (
         <div className="bg-white mb-8">
@@ -49,6 +69,17 @@ export default function AddPost({captionInput}) {
                     onChange={({target}) => setCaption(target.value)}
                     ref={captionInput}
                 />
+                    {!allData ? (
+                        <Skeleton count={1} height={150} className="mt-5"/>
+                    ) : allData.length > 0 ? (
+                        <select className="mr-2" onChange={handleChange}>
+                        {allData.map((filter) => (
+                                    <option>
+                                        {filter.name}
+                                    </option>
+                            ))}
+                        </select>
+                    ) : null}
                 <button
                     className={`text-sm font-bold text-blue-medium`}
                     type="button"

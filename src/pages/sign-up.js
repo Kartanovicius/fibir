@@ -1,14 +1,27 @@
-import {useState, useContext, useEffect} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import {
+    useState,
+    useContext,
+    useEffect
+} from 'react';
+import {
+    Link,
+    useHistory
+} from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import * as ROUTES from '../constants/routes';
-import {doesUsernameExist} from '../services/firebase';
+import {
+    doesUsernameExist
+} from '../services/firebase';
 import '../styles/background.css';
 import * as PATHS from "../constants/paths";
 
 export default function SignUp() {
+    var humanNames = require('human-names');
+
     const history = useHistory();
-    const {firebase} = useContext(FirebaseContext);
+    const {
+        firebase
+    } = useContext(FirebaseContext);
 
     const [username, setUsername] = useState('');
     const [fullName, setFullName] = useState('');
@@ -60,6 +73,9 @@ export default function SignUp() {
                 setFullName('');
                 setEmailAddress('');
                 setPassword('');
+                if (humanNames.allEn.indexOf(setFullName) > -1) {
+                    console.log(humanNames.allEn[192]);
+                }
                 setError(error.message);
             }
         } else {
@@ -98,9 +114,9 @@ export default function SignUp() {
                            onChange={({target}) => setUsername(target.value)}
                            value={username}
                     />
-                    <input aria-label="Enter your name & surname"
+                    <input aria-label="Enter your Fake name & surname"
                            type="text"
-                           placeholder="Name & Surname"
+                           placeholder="Fake Name & Surname"
                            className="text-sm text-gray-base px-2 py-2 w-full mb-5"
                            onChange={({target}) => setFullName(target.value)}
                            value={fullName}

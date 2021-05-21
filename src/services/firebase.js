@@ -1,5 +1,7 @@
-import {firebase, FieldValue} from '../lib/firebase';
-import user from "../context/user";
+import {
+    firebase,
+    FieldValue
+} from '../lib/firebase';
 
 export async function doesUsernameExist(username) {
     const result = await firebase
@@ -90,9 +92,9 @@ export async function updateLoggedInUserFollowing(
         .collection('users')
         .doc(loggedInUserDocId)
         .update({
-            following: isFollowingProfile
-                ? FieldValue.arrayRemove(profileId)
-                : FieldValue.arrayUnion(profileId)
+            following: isFollowingProfile ?
+                FieldValue.arrayRemove(profileId) :
+                FieldValue.arrayUnion(profileId)
         });
 }
 
@@ -106,23 +108,39 @@ export async function updateFollowedUserFollowers(
         .collection('users')
         .doc(profileDocId)
         .update({
-            followers: isFollowingProfile
-                ? FieldValue.arrayRemove(loggedInUserDocId)
-                : FieldValue.arrayUnion(loggedInUserDocId)
+            followers: isFollowingProfile ?
+                FieldValue.arrayRemove(loggedInUserDocId) :
+                FieldValue.arrayUnion(loggedInUserDocId)
         });
 }
 
-export async function getPosts(userId, following) {
+export async function getPosts(userId, following, filter) {
+    console.log(filter)
     const result = await firebase
         .firestore()
         .collection('posts')
         .where('userId', 'in', following)
         .get();
 
-    const userFollowedPosts = result.docs.map((photo) => ({
-        ...photo.data(),
-        docId: photo.id
+    const userFollowedPosts = result.docs.map((post) => ({
+        ...post.data(),
+        docId: post.id
     }));
+
+    if(filter != undefined){
+        for (var i = 0; i <= userFollowedPosts.length - 1; i++) {
+            if (userFollowedPosts[i].filter != filter) {
+                userFollowedPosts.splice(i, 1);
+                i = 0;
+            }
+        }
+        for (var i = 0; i <= userFollowedPosts.length - 1; i++) {
+            if (userFollowedPosts[i].filter != filter) {
+                userFollowedPosts.splice(i, 1);
+                i = 0;
+            }
+        }
+    }
 
     const postsWithUserDetails = await Promise.all(
         userFollowedPosts.map(async (post) => {
@@ -131,12 +149,30 @@ export async function getPosts(userId, following) {
                 userLikedPost = true;
             }
             const user = await getUserByUserId(post.userId);
-            const {username} = user[0];
-            return {username, ...post, userLikedPost};
+            const {
+                username
+            } = user[0];
+            return {
+                username,
+                ...post,
+                userLikedPost
+            };
         })
     );
 
     return postsWithUserDetails;
+}
+
+export async function getFilters() {
+    const result = await firebase
+        .firestore()
+        .collection('filters')
+        .get();
+
+    return result.docs.map((item) => ({
+        ...item.data(),
+        docId: item.id
+    }));
 }
 
 export async function getUserPostsByUserId(userId) {
