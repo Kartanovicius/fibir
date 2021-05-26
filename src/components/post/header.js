@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 import Linkify from 'react-linkify';
 
-export default function Footer({caption}) {
+export default function Header({caption}) {
 
     return (
         <Linkify >
@@ -11,7 +10,3 @@ export default function Footer({caption}) {
         </Linkify>
     );
 }
-
-Footer.propTypes = {
-    caption: PropTypes.string.isRequired
-};

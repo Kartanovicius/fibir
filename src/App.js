@@ -12,6 +12,7 @@ const Login = lazy(() => import('./pages/login'));
 const SignUp = lazy(() => import('./pages/sign-up'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
 const Profile = lazy(() => import('./pages/profile'));
+const PrivacyPolicy = lazy(() => import('./pages/privacy-policy'));
 const NotFound = lazy(() => import('./pages/not-found'));
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
             <Route path={ROUTES.LOGIN} component={Login} />
             <Route path={ROUTES.SIGN_UP} component={SignUp} />
             <Route path={ROUTES.PROFILE} component={Profile} />
+            <Route path={ROUTES.PRIVACY_POLICY} component={PrivacyPolicy} />
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
             </ProtectedRoute>

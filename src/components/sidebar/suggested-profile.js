@@ -1,5 +1,4 @@
 import {useState, useContext} from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {
     updateLoggedInUserFollowing,
@@ -74,11 +73,3 @@ export default function SuggestedProfile({
         </div>
     ) : null;
 }
-
-SuggestedProfile.propTypes = {
-    profileDocId: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    profileId: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired,
-    loggedInUserDocId: PropTypes.string.isRequired,
-};

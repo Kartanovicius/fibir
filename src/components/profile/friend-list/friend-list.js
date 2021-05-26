@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import {getFriendListProfiles} from '../../../services/firebase';
 import FriendListItem from "./friend-list-item";
@@ -36,12 +35,9 @@ export default function FriendList(
                     {profiles.map((profile) => (
                         <FriendListItem
                             key={profile.docId}
-                            profileDocId={profile.docId}
                             username={profile.username}
-                            profileId={profile.userId}
                             fullName={profile.fullName}
                             userId={userId}
-                            gender={profile.gender}
                         />
                     ))}
                 </div>
@@ -49,9 +45,3 @@ export default function FriendList(
         </div>
     ) : null;
 }
-
-FriendList.propTypes = {
-    userId: PropTypes.string,
-    following: PropTypes.array,
-    loggedInUserDocId: PropTypes.string
-};

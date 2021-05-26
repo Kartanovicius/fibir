@@ -12,7 +12,7 @@ export default function TimelinePosts({filter}) {
     return (
         <div className="container col-span-2 border-r-0">
             {!posts ? (
-                <Skeleton circle={false} count={4} width={675} height={500} className="mb-5"/>
+                <Skeleton circle={false} count={4} height={500} className="mb-5"/>
             ) : (
                 posts.map((content) => <Post key={content.docId} content={content}/>)
             )}

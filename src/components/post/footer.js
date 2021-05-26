@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export default function Header({ username }) {
+export default function Footer({ username }) {
   return (
     <div className="px-6 pt-2">
       <div className=" items-center">
@@ -12,7 +11,3 @@ export default function Header({ username }) {
     </div>
   );
 }
-
-Header.propTypes = {
-  username: PropTypes.string.isRequired
-};

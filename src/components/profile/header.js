@@ -1,5 +1,4 @@
 import {useState, useEffect, useContext} from 'react';
-import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from '../../hooks/use-user';
 import {isUserFollowingProfile, toggleFollow} from '../../services/firebase';
@@ -133,17 +132,3 @@ export default function Header({
 
     );
 }
-
-Header.propTypes = {
-    postsCount: PropTypes.number.isRequired,
-    followerCount: PropTypes.number.isRequired,
-    setFollowerCount: PropTypes.func.isRequired,
-    profile: PropTypes.shape({
-        docId: PropTypes.string,
-        userId: PropTypes.string,
-        fullName: PropTypes.string,
-        username: PropTypes.string,
-        followers: PropTypes.array,
-        following: PropTypes.array
-    }).isRequired
-};

@@ -3,6 +3,8 @@ import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import Skeleton from "react-loading-skeleton";
 import {getFilters} from "../services/firebase";
+import {Link} from "react-router-dom";
+import Linkify from "react-linkify";
 
 export default function AddPost({captionInput}) {
     const [caption, setCaption] = useState('');
@@ -70,7 +72,7 @@ export default function AddPost({captionInput}) {
                     ref={captionInput}
                 />
                     {!allData ? (
-                        <Skeleton count={1} height={150} className="mt-5"/>
+                        <Skeleton count={1} height={50} className="mt-5"/>
                     ) : allData.length > 0 ? (
                         <select className="mr-2" onChange={handleChange}>
                         {allData.map((filter) => (

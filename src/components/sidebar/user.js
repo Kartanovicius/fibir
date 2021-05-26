@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import {
@@ -50,8 +49,3 @@ export default function User({ username, fullName, gender }) {
     </Link>
   );
 }
-
-User.propTypes = {
-  username: PropTypes.string,
-  fullName: PropTypes.string
-};

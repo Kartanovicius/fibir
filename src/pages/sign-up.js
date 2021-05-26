@@ -16,7 +16,6 @@ import '../styles/background.css';
 import * as PATHS from "../constants/paths";
 
 export default function SignUp() {
-    var humanNames = require('human-names');
 
     const history = useHistory();
     const {
@@ -60,22 +59,11 @@ export default function SignUp() {
                         gender: gender.toLowerCase()
                     });
 
-                /*await firebase
-                    .firestore()
-                    .collection('users')
-                    .doc('gCvMFC3xKcOhWf9AqqzLL7dqmSz2')
-                    .set({
-                        followers: createdUserResult.user.uid,
-                    });*/
-
                 history.push(ROUTES.DASHBOARD);
             } catch (error) {
                 setFullName('');
                 setEmailAddress('');
                 setPassword('');
-                if (humanNames.allEn.indexOf(setFullName) > -1) {
-                    console.log(humanNames.allEn[192]);
-                }
                 setError(error.message);
             }
         } else {
