@@ -4,11 +4,10 @@ import * as PATHS from '../../constants/paths';
 
 export default function Posts({posts, docId}) {
 
-    console.log(docId);
     return (
         <div className="detectLinks">
             {!posts
-                ? new Array(12).fill(0).map((_, i) => <Skeleton key={i} width={320} height={400}/>)
+                ? <Skeleton width={320} height={400}/>
                 : posts.length > 0
                     ? posts.map((posts) => (
                         <Linkify>

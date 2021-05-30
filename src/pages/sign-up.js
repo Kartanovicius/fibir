@@ -34,6 +34,10 @@ export default function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
 
+        if (password.length < 8){
+            return setError("Choice password with at least 8 symbols")
+        }
+
         const usernameExists = await doesUsernameExist(username);
         if (!usernameExists) {
             try {
@@ -173,7 +177,7 @@ export default function SignUp() {
                     </button>
                     <p className={`text-white my-4 w-full text-center`}>
                         Already have account?{` `}
-                        <Link to={ROUTES.LOGIN} className='font-bold'>Login</Link>
+                        <Link to={ROUTES.LOGIN} className='font-bold text-blue-light'>Login</Link>
                     </p>
                 </form>
             </div>

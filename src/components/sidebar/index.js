@@ -13,7 +13,7 @@ export default function Sidebar() {
             <div className="">
                 <User username={username} fullName={fullName} gender={gender}/>
             </div>
-            <Suggestions userId={userId} following={following} loggedInUserDocId={docId}/>
+                <Suggestions userId={userId} following={following} loggedInUserDocId={docId}/>
         </div>
     );
 }

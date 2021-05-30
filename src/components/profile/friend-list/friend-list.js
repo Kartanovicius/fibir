@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import Skeleton from 'react-loading-skeleton';
 import {getFriendListProfiles} from '../../../services/firebase';
 import FriendListItem from "./friend-list-item";
+import * as PATHS from "../../../constants/paths";
 
 export default function FriendList(
     {
@@ -43,5 +44,14 @@ export default function FriendList(
                 </div>
             </div>
         </div>
-    ) : null;
+    ) : (!profiles || (profiles.length === 0 &&
+        <div className="grid grid-cols-2 justify-center items-center bg-black-light p-20 gap-4">
+            <div>
+                <p className="text-white text-center text-xl font-semibold mb-3">We looked for accounts that you following
+                but we didn't find any
+            </p>
+                <p className="text-white text-center text-lg"> Maybe try to follow someone?</p></div>
+            <img className="w-40 mx-auto" src={PATHS.EMPTY_PATH} alt="empty box"/>
+        </div>))
+        ;
 }

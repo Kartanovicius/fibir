@@ -47,12 +47,7 @@ export default function Profile({user}) {
                     gender={gender}
                 />
                 <Menu
-                    Header
-                    postsCount={postsCollection ? postsCollection.length : 0}
                     profile={profile}
-                    followerCount={followerCount}
-                    setFollowerCount={dispatch}
-                    gender={gender}
                 />
             </div>
             <div className="col-span-2">

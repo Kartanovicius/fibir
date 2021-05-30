@@ -21,7 +21,7 @@ export default function Comments({docId, comments: allComments, posted, commentI
                             <span className="mr-1 font-bold text-gray-100">{item.displayName}</span>
                         </Link>
                         <Linkify>
-                            <span>{item.comment}</span>
+                            <span className="detectLinks">{item.comment}</span>
                         </Linkify>
                     </p>
                 ))}

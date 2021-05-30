@@ -75,7 +75,7 @@ export default function Login() {
             </button>
             <p className={`text-white my-4 w-full text-center`}>
               Don't have an account?{` `}
-              <Link to={ROUTES.SIGN_UP} className='font-bold'>Sign up</Link>
+              <Link to={ROUTES.SIGN_UP} className='font-bold text-blue-light'>Sign up</Link>
             </p>
           </form>
         </div>
