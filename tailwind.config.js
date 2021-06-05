@@ -1,14 +1,8 @@
 module.exports = {
-    future: {
-        removeDeprecatedGapUtilities: true
-    },
     plugins: [
         require('@tailwindcss/custom-forms'),
     ],
     theme: {
-        fill: (theme) => ({
-            red: theme('colors.red.primary')
-        }),
         colors: {
             white: '#ffffff',
             blue: {

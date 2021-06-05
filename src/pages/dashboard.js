@@ -19,7 +19,7 @@ export default function Dashboard({user: loggedInUser}) {
                 <Sticky>
                     <Header/>
                 </Sticky>
-                <div className="grid grid-cols-1 gap-4 justify-between mx-auto max-w-screen-lg md:grid-cols-3">
+                <div className="grid grid-cols-1 gap-4 mx-auto max-w-screen-lg md:grid-cols-3">
                     <Timeline/>
                     <div>
                         <Sidebar/>
