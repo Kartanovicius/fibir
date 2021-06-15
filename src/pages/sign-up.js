@@ -29,7 +29,7 @@ export default function SignUp() {
     const [gender, setGender] = useState('');
 
     const [error, setError] = useState('');
-    const isInvalid = password === '' || emailAddress === '';
+    const isInvalid = password === '' || emailAddress === '' || username === '' || fullName === '' || gender === '';
 
     const handleSignUp = async (event) => {
         event.preventDefault();
