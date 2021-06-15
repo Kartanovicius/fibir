@@ -17,7 +17,7 @@ export default function Comments({docId, comments: allComments, posted, commentI
             <div className="p-6 pt-1 pb-4 pl-14">
                 {comments.slice(0, commentsSlice).map((item) => (
                     <p key={`${item.comment}-${item.displayName}`} className="mb-1">
-                        <Link to={`/p/${item.displayName}`}>
+                        <Link to={`/p/${item.displayName.toLowerCase()}`}>
                             <span className="mr-1 font-bold text-gray-100">{item.displayName}</span>
                         </Link>
                         <Linkify>
