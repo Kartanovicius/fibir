@@ -38,7 +38,7 @@ export default function Profile({user}) {
 
     return (
         <div className="md:grid grid-cols-3 gap-4">
-            <div className="grid col-span-1 gap-4">
+            <div className="grid col-span-1 gap-4 md:h-0">
                 <Header
                     postsCount={postsCollection ? postsCollection.length : 0}
                     profile={profile}
